@@ -13,9 +13,9 @@ public class LombokTest {
 
     public static void main(String[] args) {
         Person person = new Person();
-        person.setName("lv");
-        person.setAge(1);
-        person.setBirthday(new Date());
-        System.out.println(person);
+        //person.setName("lv");
+        //person.setAge(1);
+        //person.setBirthday(new Date());
+        System.out.println(person.getAge());
     }
 }
