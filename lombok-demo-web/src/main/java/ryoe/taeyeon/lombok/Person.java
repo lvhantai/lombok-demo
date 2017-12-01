@@ -1,6 +1,7 @@
 package ryoe.taeyeon.lombok;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -28,18 +29,27 @@ import java.util.Date;
  * @Data 包含了@ToString，@EqualsAndHashCode，@Getter / @Setter和@RequiredArgsConstructor的功能
  */
 @Data
+/**
+ * @Accessors 主要用于控制生成的getter和setter.
+ * 主要参数介绍 fluent boolean值，默认为false。此字段主要为控制生成的getter和setter方法前面是否带get/set
+ * chain boolean值，默认false。如果设置为true，setter返回的是此对象，方便链式调用方法
+ * prefix 设置前缀 例如：@Accessors(prefix = "abc") private String abcAge 当生成get/set方法时，会把此前缀去掉
+ */
+@Accessors(fluent = false, chain = false)
+@Value
 public class Person {
     /**
      * 可以用@Getter / @Setter注释任何字段，让lombok自动生成默认的getter / setter方法。
      * 默认生成的方法是public的，如果要修改方法修饰符可以设置AccessLevel的值，例如：@Getter(AccessLevel.PROTECTED)
      */
     @Getter(AccessLevel.PUBLIC) @Setter private String name;
-    private Integer age;
+    @NonNull private Integer age;
     private final Date birthday;
     private Person mother;
     private Person father;
     private String hobby;
     private String habit;
+    private boolean gender;
 
 //    public Integer getAge() {
 //        return age;
